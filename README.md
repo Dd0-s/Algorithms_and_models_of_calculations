@@ -1,1 +1,1 @@
-# Algorithms_and_models_of_calculations
+# Проекты по предмету "Алгоритмы и модели вычислений"

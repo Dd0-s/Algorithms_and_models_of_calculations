@@ -1,0 +1,40 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}	
+\usepackage[english,russian]{babel}	
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} 
+\usepackage[left=16mm, top=20mm, right=16mm, bottom=20mm, nohead, nofoot]{geometry}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{wasysym}
+\usepackage{tikz}
+
+\begin{document} 
+
+\begin{center}
+	\textbf{Дополнительная задача 2}\\
+	\textbf{Богданов Александр Иванович,  Б05-001}\\
+\end{center}
+
+\begin{enumerate}
+
+\item Как работает создаются ключи?
+
+Равновероятно заполняем векторы $s$ и $e$ элементами из диапазона $(-\frac{module}{2} + 1; \frac{module}{2})$.  Затем равновероятно заполним вектор $a$ элементами из диапазона $(1,  module)$.  $ase\_vector$ посчитаем таким образом   $ase\_vector = (a\_vector * s\_vector + e\_vector) \% module$.
+
+\item Как работает происходит вычисление векторов,  необходимых для проверки?
+
+Мы вычисляем по определенным формулам $c,  z1,  z2$.  (В программе указаны)
+
+\item Как работает проверка?
+
+Зная $c,  z1,  z2$,  проверяется,  что вектор $w$ получились именно такими,  которыми они должны быть.
+
+\item Как работает взлом?
+
+Во - первых,  вектора $z_1$ и $z_2$ не должны быть не нулевыми,  они так задаются при создании пары,  а во вторых вектора $z_1,  z_2,  c$ должны удовлетворять соотношению: $(a\_vector * z1 + z2 - ase\_vector * c + message\_hash) \% module - c = 0$.  Возьмем вектор $c$ равный нулю,  вектор $z1$ с элементами равными $module$ ($module$ не равен нулю),  вектор $z2$ заполним такими элементами,  которые в сумме с $message\_hash$ дают ноль,  если какой - то элемент $message\_hash$ равен нулю,  то соответствующему элементу добавим $m$,  так как остаток $m$ от деления на $m$ равен нулю.
+
+\end{enumerate}
+
+\end{document}
